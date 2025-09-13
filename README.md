@@ -1,2 +1,1 @@
-# es-studio-next
-ES Studio website migration to Next js + TS
+This is ES Studio, an interior design platform that will transform your spaces.
