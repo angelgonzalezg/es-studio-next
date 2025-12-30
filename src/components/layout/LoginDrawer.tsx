@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/hooks/useUser";
 import Link from "next/link";
 import Button from "../ui/Button";
+import { LogInIcon } from 'lucide-react'
 
 const LoginDrawer: React.FC = () => {
 
@@ -53,10 +54,7 @@ const LoginDrawer: React.FC = () => {
         onClick={() => setIsOpen(true)}
         className="lg:flex justify-center items-center relative group overflow-hidden hidden border-1 p-0.5 px-2 rounded cursor-pointer"
       >
-        Acceder
-        <span className="opacity-0 pl-0.5 translate-x-[-5px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
-          &rarr;
-        </span>
+        <LogInIcon className="p-0.5" />
       </button>
 
       {/* Login drawer and dark overlay in portal */}
@@ -70,7 +68,7 @@ const LoginDrawer: React.FC = () => {
             />
             {/* Login drawer */}
             <div
-              className={`fixed items-center justify-center top-0 right-0 h-full w-90 bg-background shadow-xl p-6 z-50 
+              className={`fixed items-center justify-center top-0 right-0 h-full w-90 bg-background shadow-xl p-6 z-50
                 transform transition-transform duration-500 ease-in-out 
                 ${isOpen ? 'translate-x-0' : 'translate-x-full'
                 }`}
@@ -108,7 +106,7 @@ const LoginDrawer: React.FC = () => {
                   setIsOpen(false);
                   setError(null);
                 }}
-                className="absolute top-2 right-2 text-gray-500"
+                className="absolute top-2 right-2 text-gray-500 z-10"
               >
                 ✕
               </button>

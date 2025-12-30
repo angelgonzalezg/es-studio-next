@@ -2,7 +2,7 @@ import React from 'react'
 
 const WaveDivider: React.FC = () => {
   return (
-    <div className="relative w-full overflow-hidden -rotate-180 leading-[0] mt-10">
+    <div className="relative w-full overflow-hidden -rotate-180 leading-[0] opacity-35 pb-50 z-1">
       <svg
         className="relative block w-[250%] h-[150px]"
         data-name="Wave Oak"
@@ -20,7 +20,8 @@ const WaveDivider: React.FC = () => {
         </path>
         <path
           className="fill-oak animate-wave-slow"
-          d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8,0V0Z">
+          d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8,0V0Z"
+          opacity="1">
         </path>
       </svg>
     </div>

@@ -1,10 +1,10 @@
 "use client"
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import LoginDrawer from "@/components/layout/LoginDrawer";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useUser } from '@/hooks/useUser';
 import { supabaseClient } from "@/lib/supabaseClient";
 
@@ -14,6 +14,18 @@ const Navbar: React.FC = () => {
   const { user, loading } = useUser()
   // Router for navigation
   const router = useRouter();
+  const pathname = usePathname();
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Handle logout
   const handleLogout = async () => {
@@ -25,8 +37,13 @@ const Navbar: React.FC = () => {
     return <p>Loading...</p>; // or a loading spinner
   }
 
+  const isHome = pathname === '/';
+  const navbarClasses = `flex justify-between items-center fixed top-0 left-0 w-full px-5 lg:px-15 p-2 z-50 transition-all duration-500 ${
+    isHome && scrollY === 0 ? 'bg-transparent backdrop-blur-none h-30' : 'backdrop-blur-lg border-b border-black/10 h-20'
+  }`;
+
   return (
-    <nav className="flex justify-between items-center fixed top-0 left-0 w-full h-20 backdrop-blur-sm border-b border-black/10 px-5 lg:px-15 p-2 z-50">
+    <nav className={navbarClasses}>
       <Link href="/">
         <Image
           src={icon}
