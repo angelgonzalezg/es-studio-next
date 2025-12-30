@@ -40,6 +40,10 @@ const Navbar: React.FC = () => {
         {!user ? (
           <>
             <li className="px-4">
+              <Link href="/">Home</Link>
+            </li>
+            <li>|</li>
+            <li className="px-4">
               <Link href="/about">Nosotros</Link>
             </li>
             <li>|</li>

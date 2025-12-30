@@ -29,3 +29,28 @@ body {
 h1, h2, h3 {
   font-family: var(--font-raleway);
 }
+
+
+@keyframes wave {
+  0% {
+    transform: translateX(0%) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.55);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
+
+.animate-wave {
+  animation: wave 40s linear infinite;
+}
+
+.animate-wave-delay {
+  animation: wave 45s linear infinite;
+}
+
+.animate-wave-slow {
+  animation: wave 50s linear infinite;
+}
