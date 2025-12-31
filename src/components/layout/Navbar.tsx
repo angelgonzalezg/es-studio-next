@@ -38,8 +38,8 @@ const Navbar: React.FC = () => {
   }
 
   const isHome = pathname === '/';
-  const navbarClasses = `flex justify-between items-center fixed top-0 left-0 w-full px-5 lg:px-15 p-2 z-50 transition-all duration-500 ${
-    isHome && scrollY === 0 ? 'bg-transparent backdrop-blur-none h-30' : 'backdrop-blur-lg border-b border-black/10 h-20'
+  const navbarClasses = `flex justify-between items-center fixed top-0 left-0 w-full px-5 lg:px-15 p-2 z-50 transition-all duration-500 ease-in-out ${
+    isHome && scrollY === 0 ? 'bg-transparent backdrop-blur-none border-b border-transparent h-40 text-lg text-white shadow-none' : 'bg-background/15 backdrop-blur-lg border-b border-black/10 h-20 text-md text-black'
   }`;
 
   return (

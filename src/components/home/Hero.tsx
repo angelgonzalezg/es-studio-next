@@ -17,11 +17,11 @@ const Hero: React.FC = () => {
         src={backgroundImage}
         alt="Background Image"
         fill
-        className="object-cover opacity-80 z-1"
+        className="object-cover opacity-85 z-1"
         priority
       />
       <div
-        className="relative flex flex-col md:flex-row justify-center items-center px-6 z-1">
+        className="relative flex flex-col md:flex-row justify-center items-center px-6 py-20 z-1">
         <motion.div
           className="w-50 md:w-85"
           initial={{ opacity: 0, x: -50 }}
