@@ -4,8 +4,8 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 
-import WaveDivider from "../ui/WaveDivider";
-import Button from "../ui/Button";
+import WaveDivider from "@/components/ui/WaveDivider"
+import Button from "@/components/ui/Button";
 
 import logo from '../../../public/images/es_logo.png';
 import backgroundImage from '../../../public/images/housing/cabin2.png';

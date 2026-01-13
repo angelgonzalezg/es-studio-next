@@ -6,7 +6,7 @@ import { supabaseClient } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/hooks/useUser";
 import Link from "next/link";
-import Button from "../ui/Button";
+import Button from "@/components/ui/Button";
 import { LogInIcon } from 'lucide-react'
 
 const LoginDrawer: React.FC = () => {

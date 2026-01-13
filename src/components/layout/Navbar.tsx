@@ -38,8 +38,9 @@ const Navbar: React.FC = () => {
   }
 
   const isHome = pathname === '/';
+  const isProjects = pathname === '/portfolio';
   const navbarClasses = `flex justify-between items-center fixed top-0 left-0 w-full px-5 lg:px-15 p-2 z-50 transition-all duration-500 ease-in-out ${
-    isHome && scrollY === 0 ? 'bg-transparent backdrop-blur-none border-b border-transparent h-40 text-lg text-white shadow-none' : 'bg-background/15 backdrop-blur-lg border-b border-black/10 h-20 text-md text-black'
+    (isHome || isProjects) && scrollY === 0 ? 'bg-transparent backdrop-blur-none border-b border-transparent h-40 text-lg text-white shadow-none' : 'bg-background/15 backdrop-blur-lg border-b border-black/10 h-20 text-md text-black'
   }`;
 
   return (
@@ -61,7 +62,7 @@ const Navbar: React.FC = () => {
             </li>
             <li>|</li>
             <li className="px-4">
-              <Link href="/about">Nosotros</Link>
+              <Link href="/about">Studio</Link>
             </li>
             <li>|</li>
             <li className="px-4">
@@ -69,7 +70,7 @@ const Navbar: React.FC = () => {
             </li>
             <li>|</li>
             <li className="px-4">
-              <Link href="/projects">Proyectos</Link>
+              <Link href="/portfolio">Portfolio</Link>
             </li>
             <li>|</li>
             <li className="px-4">
