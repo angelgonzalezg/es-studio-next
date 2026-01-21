@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/es_logo.png",
   },
+  other: {
+    'format-detection': 'telephone=no, date=no, email=no, address=no'
+  },
   openGraph: {
     title: "ES Studio",
     description: "ES interior design",

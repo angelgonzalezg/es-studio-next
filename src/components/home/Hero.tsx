@@ -12,7 +12,7 @@ import backgroundImage from '../../../public/images/housing/cabin2.png';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative flex flex-col text-white h-screen pt-50">
+    <section className="relative flex flex-col text-white h-screen pt-40">
       <Image
         src={backgroundImage}
         alt="Background Image"
@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
             <Image
               src={logo}
               alt="ES-Logo"
-              width={400}
+              width={300}
               priority // inmediate download
               className="object-contain" // maintain proportions 
             />
@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h1 className="text-xl md:text-3xl md:mt-15 md:py-5 mb-5 cursor-default">
+          <h1 className="text-xl md:text-2xl mb-5 cursor-default">
             <span className="font-semibold">Estética atemporal</span>,<br />
             espacios que <span className="font-semibold">inspiran.</span>
           </h1>
@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
                 text="Acerca"
               />
             </Link>
-            <Link href="/projects"
+            <Link href="/portfolio"
               className="text-sm md:text-base relative group overflow-hidden">
               Ver proyectos
               <span className="md:opacity-0 pl-1 translate-x-[-5px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">

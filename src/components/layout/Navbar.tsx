@@ -6,6 +6,7 @@ import Image from "next/image";
 import LoginDrawer from "@/components/layout/LoginDrawer";
 import { useRouter, usePathname } from "next/navigation";
 import { useUser } from '@/hooks/useUser';
+import NavLinks from '@/components/layout/NavLinks';
 import { supabaseClient } from "@/lib/supabaseClient";
 
 import icon from "../../../public/images/es_logo.png";
@@ -33,14 +34,16 @@ const Navbar: React.FC = () => {
     router.push('/'); // Redirect to home after logout
   }
 
-  if (loading) {
-    return <p>Loading...</p>; // or a loading spinner
-  }
+  // if (loading) {
+  //   return <p>Loading...</p>; // or a loading spinner
+  // }
 
   const isHome = pathname === '/';
-  const isProjects = pathname === '/portfolio';
-  const navbarClasses = `flex justify-between items-center fixed top-0 left-0 w-full px-5 lg:px-15 p-2 z-50 transition-all duration-500 ease-in-out ${
-    (isHome || isProjects) && scrollY === 0 ? 'bg-transparent backdrop-blur-none border-b border-transparent h-40 text-lg text-white shadow-none' : 'bg-background/15 backdrop-blur-lg border-b border-black/10 h-20 text-md text-black'
+  const navbarClasses = `flex justify-between items-center fixed top-0 left-0 w-full px-5 lg:px-15 p-2 z-50 transition-all duration-200 ease-in-out ${
+    (isHome) && scrollY === 0 ? 'bg-transparent backdrop-blur-none border-b border-transparent h-40 text-md text-white shadow-none' : 'bg-background/15 backdrop-blur-lg border-b border-black/10 h-20 text-sm text-black'
+  }`;
+  const hamburgerSpanClasses = `h-0.5 ${
+    (isHome) && scrollY === 0 ? 'bg-white' : 'bg-black'
   }`;
 
   return (
@@ -54,45 +57,23 @@ const Navbar: React.FC = () => {
         />
       </Link>
 
-      <ul className="lg:flex hidden space-x-2">
-        {!user ? (
-          <>
-            <li className="px-4">
-              <Link href="/">Home</Link>
-            </li>
-            <li>|</li>
-            <li className="px-4">
-              <Link href="/about">Studio</Link>
-            </li>
-            <li>|</li>
-            <li className="px-4">
-              <Link href="/services">Servicios</Link>
-            </li>
-            <li>|</li>
-            <li className="px-4">
-              <Link href="/portfolio">Portfolio</Link>
-            </li>
-            <li>|</li>
-            <li className="px-4">
-              <Link href="/contact">Contacto</Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li className="px-4">
-              <Link href="/dashboard">Dashboard</Link>
-            </li>
-            <li>|</li>
-            <li className="px-4">
-              <Link href="/customers">Clientes</Link>
-            </li>
-            <li>|</li>
-            <li className="px-4">
-              <Link href="/schedule">Agenda</Link>
-            </li>
-          </>
-        )}
-      </ul>
+      <NavLinks
+        links={
+          user
+            ? [
+                { href: '/dashboard', text: 'Dashboard' },
+                { href: '/customers', text: 'Clientes' },
+                { href: '/schedule', text: 'Agenda' },
+              ]
+            : [
+                { href: '/', text: 'Home' },
+                { href: '/about', text: 'Studio' },
+                { href: '/services', text: 'Servicios' },
+                { href: '/portfolio', text: 'Portfolio' },
+                { href: '/contact', text: 'Contacto' },
+              ]
+        }
+      />
 
       {user ? (
         <div className="flex flex-row items-center gap-4">
@@ -115,9 +96,9 @@ const Navbar: React.FC = () => {
       {/* Hamburger menu for mobile */}
       <button className="lg:hidden cursor-pointer">
         <div className="flex flex-col items-center gap-1.5">
-          <span className="w-8 h-0.5 bg-black"></span>
-          <span className="w-6 h-0.5 bg-black"></span>
-          <span className="w-8 h-0.5 bg-black"></span>
+          <span className={`${hamburgerSpanClasses} w-8`}></span>
+          <span className={`${hamburgerSpanClasses} w-6`}></span>
+          <span className={`${hamburgerSpanClasses} w-8`}></span>
         </div>
       </button>
     </nav>
