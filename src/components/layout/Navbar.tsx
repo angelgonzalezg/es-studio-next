@@ -34,9 +34,9 @@ const Navbar: React.FC = () => {
     router.push('/'); // Redirect to home after logout
   }
 
-  // if (loading) {
-  //   return <p>Loading...</p>; // or a loading spinner
-  // }
+  if (loading) {
+    return <p>Loading...</p>; // or a loading spinner
+  }
 
   const isHome = pathname === '/';
   const navbarClasses = `flex justify-between items-center fixed top-0 left-0 w-full px-5 lg:px-15 p-2 z-50 transition-all duration-200 ease-in-out ${
@@ -80,10 +80,10 @@ const Navbar: React.FC = () => {
           <span className="text-1xl">Bienvenido,<br/> {user.email}</span>
           <button
             onClick={handleLogout}
-            className="lg:flex justify-center items-center relative group overflow-hidden hidden border-1 p-0.5 px-2 rounded cursor-pointer"
+            className="lg:flex justify-center items-center relative group overflow-hidden hidden border p-0.5 px-2 rounded cursor-pointer"
           >
             Cerrar sesión
-            <span className="opacity-0 pl-0.5 translate-x-[-5px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+            <span className="opacity-0 pl-0.5 -translate-x-1.25 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
               &larr;
             </span>
           </button>

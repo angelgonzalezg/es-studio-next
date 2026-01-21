@@ -52,7 +52,7 @@ const LoginDrawer: React.FC = () => {
     <div>
       <button
         onClick={() => setIsOpen(true)}
-        className="lg:flex justify-center items-center relative group overflow-hidden hidden border-1 p-0.5 px-2 rounded cursor-pointer"
+        className="lg:flex justify-center items-center relative group overflow-hidden hidden border p-0.5 px-2 rounded cursor-pointer"
       >
         <LogInIcon className="p-0.5" />
       </button>

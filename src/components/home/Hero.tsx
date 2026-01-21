@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
             <Link href="/portfolio"
               className="text-sm md:text-base relative group overflow-hidden">
               Ver proyectos
-              <span className="md:opacity-0 pl-1 translate-x-[-5px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+              <span className="md:opacity-0 pl-1 -translate-x-1.25 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
                 &rarr;
               </span>
             </Link>
@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
         </motion.div>
       </div>
       <WaveDivider />
-      <div className="flex flex-grow bg-oak opacity-35 z-1"></div>
+      <div className="flex grow bg-oak opacity-35 z-1"></div>
     </section>
   )
 }

@@ -2,9 +2,9 @@ import React from 'react'
 
 const WaveDivider: React.FC = () => {
   return (
-    <div className="relative w-full overflow-hidden -rotate-180 leading-[0] opacity-35 pb-5 z-1">
+    <div className="relative w-full overflow-hidden -rotate-180 leading-0 opacity-35 pb-5 z-1">
       <svg
-        className="relative block w-[250%] h-[150px]"
+        className="relative block w-[250%] h-37.5"
         data-name="Wave Divider"
         viewBox="0 0 1200 120"
         preserveAspectRatio="none">
