@@ -4,8 +4,8 @@
 @import 'swiper/css/pagination';
 
 :root {
-  --background: #fefefb; /* coconut milk */
-  --foreground: #171717;
+  --coconutmilk: #fefefb;
+  --black: #171717;
   --oak: #c0ae94;
   --olive: #4d4738;
   --earth: #755f4a;
@@ -13,8 +13,8 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--coconutmilk);
+  --color-foreground: var(--black);
   --color-oak: var(--oak);
   --color-olive: var(--olive);
   --color-earth: var(--earth);
@@ -22,11 +22,11 @@
   --font-sans: var(--font-montserrat);
   --font-serif: var(--font-raleway);
 }
-
-body {
+html, body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(---font-montserrat);
+  font-family: var(--font-montserrat);
+  overscroll-behavior-y: none;
 }
 
 h1, h2, h3 {

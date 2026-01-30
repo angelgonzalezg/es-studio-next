@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Raleway, Montserrat } from "next/font/google";
 
-import '@/app/globals.css';
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
+import './globals.css';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import Main from '@/components/layout/Main';
 
 
 const montserrat = Montserrat({
@@ -21,11 +22,14 @@ const raleway = Raleway({
 })
 
 export const metadata: Metadata = {
+  // Used to resolve relative URLs in Open Graph/Twitter images and links
+  // Prefer setting NEXT_PUBLIC_SITE_URL in your env (e.g. https://es-studio.vercel.app)
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://es-studio.vercel.app'),
   title: "ES Studio",
   description: "ES interior design",
   keywords: "interior, design, studio",
   icons: {
-    icon: "/es_logo.png",
+    icon: "/images/es_logo.png",
   },
   other: {
     'format-detection': 'telephone=no, date=no, email=no, address=no'
@@ -33,16 +37,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ES Studio",
     description: "ES interior design",
-    url: "https://www.es-studio.vercel.app",
+    // With metadataBase set, you can keep this relative if you prefer
+    url: "/",
     siteName: "ES Studio",
     images: [
       {
-        url: "/es_logo.png",
+        url: "/images/es_logo.png",
         width: 800,
         height: 600,
       },
     ],
-    locale: "es-MX",
+    // Open Graph expects underscore in locale (e.g., en_US, es_MX)
+    locale: "es_MX",
     type: "website",
   },
 };
@@ -56,7 +62,9 @@ export default function RootLayout({
     <html lang="en" className={`${montserrat.variable} ${raleway.variable}`}>
       <body>
         <Navbar />
-        {children}
+        <Main>
+          {children}
+        </Main>
         <Footer />
       </body>
     </html>

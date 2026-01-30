@@ -1,8 +1,16 @@
 import React from 'react'
+import Title from '@/components/ui/Title'
+import { section } from 'framer-motion/client'
 
 function Contact() {
   return (
-    <div className='flex flex-col h-screen pt-25'>Contact</div>
+    <section className="min-h-screen">
+      <Title
+        title={"Contacto"}
+        description={"¿Listo para transformar tu espacio? \nContáctános y hagamos realidad juntos el diseño de tus sueños."}
+      >
+      </Title>
+    </section>
   )
 }
 

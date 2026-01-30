@@ -6,12 +6,12 @@ import PageDivider from '@/components/ui/PageDivider'
 
 function About() {
   return (
-    <section className="pt-25">
+    <section className="min-h-screen">
       <Title
-        title={"Cada detalle habla de ti \n Cada espacio cuenta su historia"}
+        title={"Studio"}
+        description={"Cada detalle habla de ti \n Cada espacio cuenta su historia"}
       >
       </Title>
-      <PageDivider />
       <Image
         src="/images/designer.png"
         alt="Designer Mind"
@@ -19,20 +19,21 @@ function About() {
         height={250}
         className="mx-auto mt-10 cursor-default"
       />
-      <div className="flex flex-col justify-center items-center bg-oak text-white text-xs md:text-base mt-12 p-12 px-100 cursor-default">
-        <h3
-          className="font-semibold text-base md:text-2xl text-center p-8 cursor-default">
+      <div className="flex flex-col justify-center items-center bg-oak text-white mt-12 pb-12 cursor-default">
+        <h2
+          className="font-serif font-semibold text-xl md:text-2xl text-center p-8 cursor-default">
           ¿Quiénes somos?
-        </h3>
-        <p>Somos un estudio de diseño de interiores apasionado por crear espacios únicos que
+        </h2>
+        <p
+          className="text-sm md:text-base text-justify px-10 md:px-[20%] whitespace-pre-line"
+        >
+          Somos un estudio de diseño de interiores apasionado por crear espacios únicos que
           inspiren. Escuchamos tus ideas, entendemos tus nececidades y las plasmamos en soluciones
-          creativas y funcionales.<br />Creemos profundamente que los espacios hablan. Que cuentan historias,
+          creativas y funcionales.<br /><br />Creemos profundamente que los espacios hablan. Que cuentan historias,
           revelan costumbres, guardan momentos y tienen la capacidad de transformar cómo vivimos, cómo nos
           sentimos y cómo nos relacionamos.
         </p>
       </div>
-
-
     </section>
   )
 }

@@ -1,7 +1,8 @@
 'use client';
+
+import React from 'react'
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
 import { motion } from "framer-motion";
 
 import WaveDivider from "@/components/ui/WaveDivider"
@@ -10,9 +11,9 @@ import Button from "@/components/ui/Button";
 import logo from '../../../public/images/es_logo.png';
 import backgroundImage from '../../../public/images/housing/cabin2.png';
 
-const Hero: React.FC = () => {
+const Hero = () => {
   return (
-    <section className="relative flex flex-col text-white h-screen pt-40">
+    <section className="relative flex flex-col text-white min-h-screen pt-40 overflow-hidden">
       <Image
         src={backgroundImage}
         alt="Background Image"
@@ -26,7 +27,7 @@ const Hero: React.FC = () => {
           className="w-50 md:w-85"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 1.5, delay: 0.2 }}
         >
           <Link href="/">
             <Image
@@ -42,7 +43,7 @@ const Hero: React.FC = () => {
           className="md:text-center leading-normal"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 1, delay: 0.2 }}
         >
           <h1 className="text-xl md:text-2xl mb-5 cursor-default">
             <span className="font-semibold">Estética atemporal</span>,<br />

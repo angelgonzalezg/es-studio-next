@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import Image from 'next/image'
@@ -10,7 +11,7 @@ const images = [
   '/images/housing/cabin3.png',
 ]
 
-const Carousel: React.FC = () => {
+const Carousel = () => {
   return (
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
@@ -25,10 +26,10 @@ const Carousel: React.FC = () => {
         '--swiper-pagination-color': '#FFF',
       } as React.CSSProperties}
       loop
-      className="w-full h-screen"
+      className="w-full min-h-screen"
     >
       {images.map((src) => (
-        <SwiperSlide key={src}>
+        <SwiperSlide key={src} className="h-screen" style={{ position: 'relative' }}>
           <Image
             src={src}
             alt="Image slide"

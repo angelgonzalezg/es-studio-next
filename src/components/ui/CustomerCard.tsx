@@ -11,9 +11,9 @@ type CustomerCardProps = {
   }[];
 }
 
-function CustomerCard({ customers }: CustomerCardProps) {
+const CustomerCard = ({ customers }: CustomerCardProps) => {
   return (
-    <div className="flex flex-col h-screen pt-25 px-5 lg:px-25">
+    <div className="flex flex-col min-h-screen pt-25 px-5 lg:px-25">
       <h2 className="text-2xl mb-4">Clientes:</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-10">

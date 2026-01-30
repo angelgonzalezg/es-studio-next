@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const WaveDivider: React.FC = () => {
+const WaveDivider = () => {
   return (
     <div className="relative w-full overflow-hidden -rotate-180 leading-0 opacity-35 pb-5 z-1">
       <svg

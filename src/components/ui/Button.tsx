@@ -18,7 +18,7 @@ type ButtonProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>, // Reusable onClick prop for any function type
 };
 
-const Button: React.FC<ButtonProps> = ({ text, size = "md", onClick }) => {
+const Button = ({ text, size = "md", onClick }: ButtonProps) => {
   return (
     <button 
       onClick={onClick}

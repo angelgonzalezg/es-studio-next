@@ -1,3 +1,4 @@
+import React from 'react'
 import CustomerCard from '@/components/ui/CustomerCard'
 
 interface Customer {
@@ -29,7 +30,7 @@ interface Customer {
 
 async function fetchCustomers(): Promise<Customer[]> {
   const res = await fetch("https://randomuser.me/api/?results=50", {
-      cache: 'no-store' 
+      cache: 'no-store', 
   }) // no cache for SSR, always fetch fresh data
 
   const data = await res.json();

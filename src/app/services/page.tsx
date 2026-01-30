@@ -5,13 +5,12 @@ import PageDivider from '@/components/ui/PageDivider'
 
 function Services() {
   return (
-    <section className="pt-25 min-h-screen">
+    <section className=" min-h-screen">
       <Title
-        title="Nuestros servicios"
+        title="Nuestros Servicios"
         description={"Nuestro enfoque se basa en la armonía entre el espacio y la persona,\nentre lo visual y lo emocional."}
       >
       </Title>
-      <PageDivider />
       <div className='grid grid-cols-1 md:grid-cols-2 gap-7 p-6 lg:max-w-[80%] mx-auto cursor-default'>
         <ServiceCard
           title="Diseño de interiores residencial"

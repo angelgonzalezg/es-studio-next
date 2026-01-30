@@ -9,8 +9,7 @@ import Link from "next/link";
 import Button from "@/components/ui/Button";
 import { LogInIcon } from 'lucide-react'
 
-const LoginDrawer: React.FC = () => {
-
+const LoginDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

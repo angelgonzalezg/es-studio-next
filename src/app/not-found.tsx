@@ -1,13 +1,12 @@
 import Link from "next/link"
 import Image from "next/image"
 import Button from "@/components/ui/Button"
-import { FC } from "react"
 
 const designerImage = "/designer.png"
 
-const NotFound: React.FC = () => {
+function NotFound () {
   return (
-    <section className="flex flex-col justify-center items-center h-screen gap-5">
+    <section className="flex flex-col justify-center items-center min-h-screen gap-5">
       <Image
         src={designerImage}
         alt="404 - Not Found"
@@ -28,5 +27,4 @@ const NotFound: React.FC = () => {
   )
 }
 
-export default NotFound;
-
+export default NotFound

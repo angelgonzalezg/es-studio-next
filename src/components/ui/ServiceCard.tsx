@@ -11,12 +11,12 @@ type ServiceCardProps = {
   };
 }
 
-function ServiceCard({ title, description, images }: ServiceCardProps) {
+const ServiceCard = ({ title, description, images }: ServiceCardProps) => {
   return (
     <div className="bg-background/30 backdrop-blur-3xl border border-gray-300 rounded-2xl p-4 shadow-xl">
       <div className="grid grid-cols-3 gap-2 cursor-pointer">
         {/* image left */}
-        <div className="col-span-2 aspect-[4/3] relative">
+        <div className="col-span-2 aspect-4/3 relative">
           <Image
             src={images.imageLeft.src}
             alt={images.imageLeft.alt}
