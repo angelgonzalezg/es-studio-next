@@ -2,12 +2,11 @@
 
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
-import { supabaseClient } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/hooks/useUser";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
-import { LogInIcon } from 'lucide-react'
+import { LogIn } from 'lucide-react'
 
 const LoginDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,16 +23,38 @@ const LoginDrawer = () => {
     e.preventDefault();
     setError(null);
 
-    const { error } = await supabaseClient.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const response = await fetch('http://localhost:8080/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    if (error) {
+      if (!response.ok) {
+        throw new Error('Login failed');
+      }
+
+      const data = await response.json();
+      if (data.error !== null) {
+        throw new Error('Login failed');
+      }
+
+      const token = data.data.token; // Extract from nested data
+
+      if (token) {
+        const authState = { token, email };
+        localStorage.setItem('auth_state', JSON.stringify(authState));
+        // Dispatch storage event to update useUser in same tab
+        window.dispatchEvent(new StorageEvent('storage', { key: 'auth_state', newValue: JSON.stringify(authState) }));
+        setIsOpen(false);
+        router.push('/dashboard'); // Redirect to dashboard on successful login
+      } else {
+        setError("Error al iniciar sesión. Revisa tus credenciales.");
+      }
+    } catch (err) {
       setError("Error al iniciar sesión. Revisa tus credenciales.");
-    } else {
-      setIsOpen(false);
-      router.push('/dashboard'); // Redirect to dashboard on successful login
     }
   }
 
@@ -53,7 +74,7 @@ const LoginDrawer = () => {
         onClick={() => setIsOpen(true)}
         className="lg:flex justify-center items-center relative group overflow-hidden hidden border p-0.5 px-2 rounded cursor-pointer"
       >
-        <LogInIcon className="p-0.5" />
+        <LogIn className="p-0.5" />
       </button>
 
       {/* Login drawer and dark overlay in portal */}

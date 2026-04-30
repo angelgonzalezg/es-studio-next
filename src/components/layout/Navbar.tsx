@@ -1,15 +1,15 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import LoginDrawer from "@/components/layout/LoginDrawer";
 import { useRouter, usePathname } from "next/navigation";
 import { useUser } from '@/hooks/useUser';
 import NavLinks from '@/components/layout/NavLinks';
-import { supabaseClient } from "@/lib/supabaseClient";
 
 import icon from "../../../public/images/es_logo.png";
+import { LogOut } from "lucide-react";
 
 const Navbar = () => {
   const { user, loading } = useUser()
@@ -30,8 +30,24 @@ const Navbar = () => {
 
   // Handle logout
   const handleLogout = async () => {
-    await supabaseClient.auth.signOut();
-    router.push('/'); // Redirect to home after logout
+    try {
+      const token = localStorage.getItem('jwt_token');
+      await fetch('http://localhost:8080/api/auth/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+    } catch (err) {
+      // Logout on frontend even if backend fails
+      console.error('Logout failed', err);
+    } finally {
+      localStorage.removeItem('auth_state');
+      // Dispatch storage event to update useUser in same tab
+      window.dispatchEvent(new StorageEvent('storage', { key: 'auth_state', newValue: null }));
+      router.push('/'); // Redirect to home after logout
+    }
   }
 
   if (loading) {
@@ -39,12 +55,10 @@ const Navbar = () => {
   }
 
   const isHome = pathname === '/';
-  const navbarClasses = `flex justify-between items-center fixed top-0 left-0 w-full px-5 lg:px-15 p-2 z-50 transition-all duration-300 ease-in-out ${
-    (isHome) && scrollY >= 0 && scrollY <= 40 ? 'bg-transparent backdrop-blur-none border-b border-transparent h-40 text-base text-white shadow-none' : 'bg-background/15 backdrop-blur-lg border-b border-black/10 h-20 text-sm text-black'
-  }`;
-  const hamburgerSpanClasses = `h-0.5 ${
-    (isHome) && scrollY === 0 ? 'bg-white' : 'bg-black'
-  }`;
+  const navbarClasses = `flex justify-between items-center fixed top-0 left-0 w-full px-5 lg:px-15 p-2 z-50 transition-all duration-300 ease-in-out ${(isHome) && scrollY >= 0 && scrollY <= 40 ? 'bg-transparent backdrop-blur-none border-b border-transparent h-40 text-base text-white shadow-none' : 'bg-background/15 backdrop-blur-lg border-b border-black/10 h-20 text-sm text-black'
+    }`;
+  const hamburgerSpanClasses = `h-0.5 ${(isHome) && scrollY === 0 ? 'bg-white' : 'bg-black'
+    }`;
 
   return (
     <nav className={navbarClasses}>
@@ -61,31 +75,26 @@ const Navbar = () => {
         links={
           user
             ? [
-                { href: '/dashboard', text: 'Dashboard' },
-                { href: '/customers', text: 'Clientes' },
-                { href: '/schedule', text: 'Agenda' },
-              ]
+              // { href: '/dashboard', text: 'Dashboard' }
+            ]
             : [
-                { href: '/', text: 'Home' },
-                { href: '/about', text: 'Studio' },
-                { href: '/services', text: 'Servicios' },
-                { href: '/portfolio', text: 'Portfolio' },
-                { href: '/contact', text: 'Contacto' },
-              ]
+              { href: '/', text: 'Home' },
+              { href: '/about', text: 'Studio' },
+              { href: '/services', text: 'Servicios' },
+              { href: '/portfolio', text: 'Portfolio' },
+              { href: '/contact', text: 'Contacto' },
+            ]
         }
       />
 
       {user ? (
         <div className="flex flex-row items-center gap-4">
-          <span className="text-1xl">Bienvenido,<br/> {user.email}</span>
+          <span className="text-1xl">Bienvenido,<br /> {user.email}</span>
           <button
             onClick={handleLogout}
-            className="lg:flex justify-center items-center relative group overflow-hidden hidden border p-0.5 px-2 rounded cursor-pointer"
+            className="flex lg:flex justify-center items-center relative group overflow-hidden border p-0.5 px-2 rounded cursor-pointer"
           >
-            Cerrar sesión
-            <span className="opacity-0 pl-0.5 -translate-x-1.25 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
-              &larr;
-            </span>
+            <LogOut className="p-0.5" />
           </button>
         </div>
 

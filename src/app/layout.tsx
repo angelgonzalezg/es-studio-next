@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Raleway, Montserrat } from "next/font/google";
 
 import './globals.css';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
-import Main from '@/components/layout/Main';
+import LayoutWrapper from '@/components/layout/LayoutWrapper';
 
 
 const montserrat = Montserrat({
@@ -61,11 +59,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable} ${raleway.variable}`}>
       <body>
-        <Navbar />
-        <Main>
+        <LayoutWrapper>
           {children}
-        </Main>
-        <Footer />
+        </LayoutWrapper>
       </body>
     </html>
   );
